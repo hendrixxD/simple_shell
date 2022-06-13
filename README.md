@@ -126,6 +126,18 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 ### Testing
 
+### Environment :deciduous_tree:
+
+Upon invocation, **shellby** receives and copies the environment of the parent process in which it was executed. This environment is an array of *name-value* strings describing variables in the format *NAME=VALUE*. A few key environmental variables are:
+
+#### HOME
+The home directory of the current user and the default directory argument for the **cd** builtin command.
+
+```
+$ echo "echo $HOME" | ./shellby
+/home/vagrant
+```
+
 Your shell should work like this in interactive mode:
 
 $ ./hsh
