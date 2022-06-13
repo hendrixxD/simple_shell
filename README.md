@@ -1,5 +1,6 @@
+# shellby - Simple Shell :shell:
 
-# Requirement
+A simple UNIX command interpreter written as part of the low-level programming and algorithm track at ALX.
 
 Allowed editors:
 vi, vim, emacs
