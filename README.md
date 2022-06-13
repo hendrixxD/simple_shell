@@ -291,58 +291,50 @@ Usage: exit status, where status is an integer used to exit the shell
 
 Simple shell 1.0 +
 
-Implement the setenv and unsetenv builtin commands
 
-setenv
+The operators `&&` and `||` have equal precedence, followed by `;`.
 
- Initialize a new environment variable, or modify an existing one
+### Shellby Builtin Commands :nut_and_bolt:
 
- Command syntax: setenv VARIABLE VALUE
-Should print something on stderr on failure
+#### cd
+  * Usage: `cd [DIRECTORY]`
+  * Changes the current directory of the process to `DIRECTORY`.
+  * If no argument is given, the command is interpreted as `cd $HOME`.
+  * If the argument `-` is given, the command is interpreted as `cd $OLDPWD` and the pathname of the new working directory is printed to standad output.
+  * If the argument, `--` is given, the command is interpreted as `cd $OLDPWD` but the pathname of the new working directory is not printed.
+  * The environment variables `PWD` and `OLDPWD` are updated after a change of directory.
 
-unsetenv
+Example:
+```
+$ ./shellby
+$ pwd
+/home/vagrant/holberton/simple_shell
+$ cd ../
+$ pwd
+/home/vagrant/holberton
+$ cd -
+$ pwd
+/home/vagrant/holberton/simple_shell
+```
 
- Remove an environment variable
+#### alias
+  * Usage: `alias [NAME[='VALUE'] ...]`
+  * Handles aliases.
+  * `alias`: Prints a list of all aliases, one per line, in the form `NAME='VALUE'`.
+  * `alias NAME [NAME2 ...]`: Prints the aliases `NAME`, `NAME2`, etc. one per line, in the form `NAME='VALUE'`.
+  * `alias NAME='VALUE' [...]`: Defines an alias for each `NAME` whose `VALUE` is given. If `name` is already an alias, its value is replaced with `VALUE`.
 
- Command syntax: unsetenv VARIABLE
-
- Should print something on stderr on failure
-
-10. cd
-
-### Advanced
-
-Simple shell 1.0 +
-
-Implement the builtin command cd:
-
-  Changes the current directory of the process.
-  
-  Command syntax: cd [DIRECTORY]
-
-  If no argument is given to cd the command must be interpreted like cd $HOME
-
-  You have to handle the command cd -
-
-  You have to update the environment variable PWD when you change directory
-
-man chdir, man getcwd
-
-11. ;
-
-#advanced
-
-Simple shell 1.0 +
-
-Handle the commands separator ;
-
-12. && and ||
-
-#advanced
-
-Simple shell 1.0 +
-
-Handle the && and || shell logical operators
+Example:
+```
+$ ./shellby
+$ alias show=ls
+$ show
+AUTHORS            builtins_help_2.c  errors.c         linkedlist.c        shell.h       test
+README.md          env_builtins.c     getline.c        locate.c            shellby
+alias_builtins.c   environ.c          helper.c         main.c              split.c
+builtin.c          err_msgs1.c        helpers_2.c      man_1_simple_shell  str_funcs1.c
+builtins_help_1.c  err_msgs2.c        input_helpers.c  proc_file_comm.c    str_funcs2.c
+```
 
 
 
