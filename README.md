@@ -345,59 +345,58 @@ Simple shell 1.0 +
 Handle the && and || shell logical operators
 
 
-13. alias
 
-#advanced
+#### exit
+  * Usage: `exit [STATUS]`
+  * Exits the shell.
+  * The `STATUS` argument is the integer used to exit the shell.
+  * If no argument is given, the command is interpreted as `exit 0`.
 
-Simple shell 1.0 +
-
-.Implement the alias builtin command
-
-.Usage: alias [name[='value'] ...]
-  .alias: Prints a list of all aliases, one per line, in the form name='value'
-  .alias name [name2 ...]: Prints the aliases name, name2, etc 1 per line, in the form name='value'
-  .alias name='value' [...]: Defines an alias for each name whose value is given. If name is already an alias, replaces its value with value
-
-
-### Variables
-
-#advanced
-
-Simple shell 1.0 +
-
-Handle variables replacement
-
-Handle the $? variable
-
-Handle the $$ variable
-
-15. Comments
-
-#advanced
-
-Simple shell 1.0 +
-
-Handle comments (#)
-
-julien@ubuntu:~/shell$ sh
-
-$ echo $$ # ls -la
-
-5114
-
+Example:
+```
+$ ./shellby
 $ exit
+```
 
-#advanced
+#### env
+  * Usage: `env`
+  * Prints the current environment.
 
-### Simple shell 1.0 +
+Example:
+```
+$ ./shellby
+$ env
+NVM_DIR=/home/vagrant/.nvm
+...
+```
 
-  .Usage: simple_shell [filename]
+#### setenv
+  * Usage: `setenv [VARIABLE] [VALUE]`
+  * Initializes a new environment variable, or modifies an existing one.
+  * Upon failure, prints a message to `stderr`.
 
-  .Your shell can take a file as a command line argument
+Example:
+```
+$ ./shellby
+$ setenv NAME Poppy
+$ echo $NAME
+Poppy
+```
 
-  .The file contains all the commands that your shell should run before exiting
-  .The file should contain one command per line
-  .In this mode, the shell should not print a prompt and should not read from stdin
+#### unsetenv
+  * Usage: `unsetenv [VARIABLE]`
+  * Removes an environmental variable.
+  * Upon failure, prints a message to `stderr`.
+
+Example:
+```
+$ ./shellby
+$ setenv NAME Poppy
+$ unsetenv NAME
+$ echo $NAME
+
+$
+```
 
 
 # Authors
