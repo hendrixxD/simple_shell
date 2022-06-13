@@ -232,8 +232,6 @@ You don’t have to handle any argument to the built-in exit
 
 5. Simple shell 1.0
 
-mandatory
-
 Simple shell 0.4 +
 
 Implement the env built-in, that prints the current environment
@@ -258,15 +256,11 @@ be able to move the cursor
 
 7. Simple shell 0.2.1
 
-#advanced
-
 Simple shell 0.2 +
 
 You are not allowed to use strtok
 
 8. Simple shell 0.4.1
-
-#advanced
 
 Simple shell 0.4 +
 
