@@ -399,5 +399,16 @@ $ exit
   .The file should contain one command per line
   .In this mode, the shell should not print a prompt and should not read from stdin
 
-### AUTHOURS: 
-HENDRIXX JOSHUA AND CLINTON OGAYI
+
+# Authors
+
+* Clinton Ogayi [Clinton](github.com/clintonkes)>
+* Hendrixx Joshua <[Hendrixx](github.com/hendrixxD)>
+
+# License
+
+This project is licensed under the MIT License - see the <a href="https://github.com/sentayehut/simple_shell/blob/master/LICENSE">LICENSE</a> file for details.
+
+# Acknowledgements
+
+Shellby emulates basic functionality of the sh shell. This README borrows form the Linux man pages <a href="https://linux.die.net/man/1/sh">sh(1)</a> and <a href="https://linux.die.net/man/1/dash">dash(1)</a>.
