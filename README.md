@@ -29,9 +29,9 @@ GitHub
 *There should be one project repository per group. If you and your partner have a repository with the same name in both your accounts, you risk a 0% score. Add your partner as a collaborator. *
 
 
-# More Info
+## More Info
 
-## Output
+### Output
 
 Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
 
@@ -52,7 +52,7 @@ $ echo "qwerty" | ./././hsh
 ./././hsh: 1: qwerty: not found
 $
 
-List of allowed functions and system calls
+### List of allowed functions and system calls
 
 access (man 2 access)
 
@@ -117,7 +117,7 @@ wait4 (man 2 wait4)
 write (man 2 write)
 
 
-Compilation
+### Compilation
 
 Your shell will be compiled this way:
 
@@ -163,12 +163,12 @@ hsh main.c shell.c test_ls_2
 
 $
 
-Checks
+### Checks
 
 The Checker will be released at the end of the project (1-2 days before the deadline). We strongly encourage the entire class to work together to create a suite of checks covering both regular tests and edge cases for each task. See task 8. Test suite.
 
 
-Tasks
+### Tasks
 
 0. Betty would be proud
 mandatory
@@ -311,7 +311,7 @@ unsetenv
 
 10. cd
 
-#advanced
+### Advanced
 
 Simple shell 1.0 +
 
@@ -388,10 +388,6 @@ $ echo $$ # ls -la
 
 $ exit
 
-julien@ubuntu:~/shell$ 
-
-16. File as input
-
 #advanced
 
 Simple shell 1.0 +
@@ -404,4 +400,5 @@ Simple shell 1.0 +
   .The file should contain one command per line
   .In this mode, the shell should not print a prompt and should not read from stdin
 
-AUTHOURS: HENDRIXX JOSHUA AND CLINTON OGAYI
+# AUTHOURS: 
+HENDRIXX JOSHUA AND CLINTON OGAYI
