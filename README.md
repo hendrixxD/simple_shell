@@ -1,34 +1,38 @@
 # shellby - Simple Shell :shell:
 
-A simple UNIX command interpreter written as part of the low-level programming and algorithm track at ALX.
+## Description :speech_balloon:
+
+**Shellby** is a simple UNIX command language interpreter that reads commands from either a file or standard input and executes them.
+
+### Invocation :running:
+
+Usage: **shellby** [filename]
+
+To invoke **shellby**, compile all `.c` files in the repository and run the resulting executable:
+
+```
+gcc *.c -o shellby
+./shellby
+```
 
 Allowed editors:
 vi, vim, emacs
 
 All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 
-All your files should end with a new line
-
-A README.md file, at the root of the folder of the project is mandatory
-
-Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
-
-Your shell should not have any memory leaks
-
-No more than 5 functions per file
-
-All your header files should be include guarded
-
-Use system calls only when you need to (why?)
-
-Write a README with the description of your project
-
-You should have an AUTHORS file at the root of your repository, listing all individuals having contributed content to the repository. Format, see Docker
-
-
 ## More Info
 
 ### Output
+
+
+**Shellby** can be invoked both interactively and non-interactively. If **shellby** is invoked with standard input not connected to a terminal, it reads and executes received commands in order.
+
+Example:
+```
+$ echo "echo 'hello'" | ./shellby
+'hello'
+$
+```
 
 Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
 
