@@ -214,8 +214,6 @@ Handle command lines with arguments
 
 3. Simple shell 0.3
 
-mandatory
-
 Simple shell 0.2 +
 
 Handle the PATH
@@ -223,8 +221,6 @@ Handle the PATH
 fork must not be called if the command doesn’t exist
 
 4. Simple shell 0.4
-
-mandatory
 
 Simple shell 0.3 +
 
