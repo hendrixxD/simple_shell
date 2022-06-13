@@ -34,88 +34,87 @@ $ echo "echo 'hello'" | ./shellby
 $
 ```
 
-Unless specified otherwise, your program must have the exact same output as sh (/bin/sh) as well as the exact same error output.
+#### PWD
+The current working directory as set by the **cd** command.
 
-The only difference is when you print an error, the name of the program must be equivalent to your argv[0] (See below)
+```
+$ echo "echo $PWD" | ./shellby
+/home/vagrant/holberton/simple_shell
+```
 
-Example of error with sh:
+#### OLDPWD
+The previous working directory as set by the **cd** command.
 
-$ echo "qwerty" | /bin/sh
-/bin/sh: 1: qwerty: not found
-$ echo "qwerty" | /bin/../bin/sh
-/bin/../bin/sh: 1: qwerty: not found
+```
+$ echo "echo $OLDPWD" | ./shellby
+/home/vagrant/holberton/printf
+```
+
+#### PATH
+A colon-separated list of directories in which the shell looks for commands. A null directory name in the path (represented by any of two adjacent colons, an initial colon, or a trailing colon) indicates the current directory.
+
+```
+$ echo "echo $PATH" | ./shellby
+/home/vagrant/.cargo/bin:/home/vagrant/.local/bin:/home/vagrant/.rbenv/plugins/ruby-build/bin:/home/vagrant/.rbenv/shims:/home/vagrant/.rbenv/bin:/home/vagrant/.nvm/versions/node/v10.15.3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vagrant/.cargo/bin:/home/vagrant/workflow:/home/vagrant/.local/bin
+```
+
+### Command Execution :hocho:
+
+After receiving a command, **shellby** tokenizes it into words using `" "` as a delimiter. The first word is considered the command and all remaining words are considered arguments to that command. **Shellby** then proceeds with the following actions:
+1. If the first character of the command is neither a slash (`\`) nor dot (`.`), the shell searches for it in the list of shell builtins. If there exists a builtin by that name, the builtin is invoked.
+2. If the first character of the command is none of a slash (`\`), dot (`.`), nor builtin, **shellby** searches each element of the **PATH** environmental variable for a directory containing an executable file by that name.
+3. If the first character of the command is a slash (`\`) or dot (`.`) or either of the above searches was successful, the shell executes the named program with any remaining given arguments in a separate execution environment.
+
+### Exit Status :wave:
+
+**Shellby** returns the exit status of the last command executed, with zero indicating success and non-zero indicating failure.
+
+If a command is not found, the return status is `127`; if a command is found but is not executable, the return status is 126.
+
+All builtins return zero on success and one or two on incorrect usage (indicated by a corresponding error message).
+
+### Signals :exclamation:
+
+While running in interactive mode, **shellby** ignores the keyboard input `Ctrl+c`. Alternatively, an input of end-of-file (`Ctrl+d`) will exit the program.
+
+User hits `Ctrl+d` in the third line.
+```
+$ ./shellby
+$ ^C
+$ ^C
 $
-Same error with your program hsh:
+```
 
-$ echo "qwerty" | ./hsh
-./hsh: 1: qwerty: not found
-$ echo "qwerty" | ./././hsh
-./././hsh: 1: qwerty: not found
-$
+### Variable Replacement :heavy_dollar_sign:
 
-### List of allowed functions and system calls
+**Shellby** interprets the `$` character for variable replacement.
 
-access (man 2 access)
+#### $ENV_VARIABLE
+`ENV_VARIABLE` is substituted with its value.
 
-chdir (man 2 chdir)
+Example:
+```
+$ echo "echo $PWD" | ./shellby
+/home/vagrant/holberton/simple_shell
+```
 
-close (man 2 close)
+#### $?
+`?` is substitued with the return value of the last program executed.
 
-closedir (man 3 closedir)
+Example:
+```
+$ echo "echo $?" | ./shellby
+0
+```
 
-execve (man 2 execve)
+#### $$
+The second `$` is substitued with the current process ID.
 
-exit (man 3 exit)
-
-_exit (man 2 _exit)
-
-fflush (man 3 fflush)
-
-fork (man 2 fork)
-
-free (man 3 free)
-
-getcwd (man 3 getcwd)
-
-getline (man 3 getline)
-
-getpid (man 2 getpid)
-
-isatty (man 3 isatty)
-
-kill (man 2 kill)
-
-malloc (man 3 malloc)
-
-open (man 2 open)
-
-opendir (man 3 opendir)
-
-perror (man 3 perror)
-
-read (man 2 read)
-
-readdir (man 3 readdir)
-
-signal (man 2 signal)
-
-stat (__xstat) (man 2 stat)
-
-lstat (__lxstat) (man 2 lstat)
-
-fstat (__fxstat) (man 2 fstat)
-
-strtok (man 3 strtok)
-
-wait (man 2 wait)
-
-waitpid (man 2 waitpid)
-
-wait3 (man 2 wait3)
-
-wait4 (man 2 wait4)
-
-write (man 2 write)
+Example:
+```
+$ echo "echo $$" | ./shellby
+6494
+```
 
 
 ### Compilation
