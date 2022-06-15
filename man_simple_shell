@@ -1,6 +1,7 @@
 B.\"Manpage for simple shell 
 .\"Created by Clinton Ogayi and Hendrixx Joshua
 
+
 .TH SODASH 1 "June 4 2022" "SODA SHELL - Simple Shell man page"
 
 .SH NAME
